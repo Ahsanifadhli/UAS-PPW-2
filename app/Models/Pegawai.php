@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pegawai extends Model
 {
     protected $table = 'pegawai';
+
+    use HasFactory, SoftDeletes;
 
     public function pegawai()
     {
