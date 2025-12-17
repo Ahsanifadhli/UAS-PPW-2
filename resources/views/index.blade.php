@@ -3,18 +3,18 @@
 @section('menuberanda', 'underline decoration-4 underline-offset-7')
 
 @section('content')
-    {{-- HTML INI PERSIS 100% SAMA KODINGAN ASLIMU --}}
+
     <section class="p-4 bg-white rounded-lg">
         <h1 class="text-3xl font-bold text-[#C0392B] mb-6 text-center">Statistik</h1>
         <div class="mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {{-- Chart Kiri --}}
+
                 <div>
                     <div class="flex justify-center">
                         <canvas id="chart1" class="w-full max-w-[600px]"></canvas>
                     </div>
                 </div>
-                {{-- Chart Kanan --}}
+
                 <div class="flex justify-center">
                     <canvas id="chart2" class="w-full max-w-[600px]"></canvas>
                 </div>
@@ -24,7 +24,7 @@
 @endsection
 
 @push('js')
-    {{-- Script JS tetap dinamis ambil data dari Controller --}}
+
     <script src="{{ asset('plugins/chartjs-4/chart-4.5.0.js') }}"></script>
 
     <script>
@@ -39,8 +39,8 @@
                     // Data Dinamis
                     data: [{{ $maleCount }}, {{ $femaleCount }}],
                     backgroundColor: [
-                        '#3b82f6', // Biru
-                        '#ec4899'  // Pink
+                        '#3b82f6',
+                        '#ec4899'
                     ]
                 }]
             },
@@ -64,11 +64,11 @@
         new Chart(ctx2, {
             type: 'bar',
             data: {
-                // Data Dinamis (Array PHP ke JS)
+
                 labels: {!! json_encode($jobLabels) !!},
                 datasets: [{
                     label: 'Jumlah Pegawai',
-                    // Data Dinamis
+
                     data: {!! json_encode($jobTotals) !!},
                     backgroundColor: '#C0392B',
                     borderColor: '#922B21',
@@ -89,7 +89,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { stepSize: 1 } // Biar angkanya bulat
+                        ticks: { stepSize: 1 }
                     },
                 }
             }

@@ -37,12 +37,17 @@ class PegawaiController extends Controller
 
     // CREATE (Simpan Data Baru)
     public function store(Request $request) {
-        $validator = Validator::make($request->all(), [
+       $validator = Validator::make($request->all(), [
             'nama'         => 'required|string|max:255',
             'email'        => 'required|email|unique:pegawai,email',
             'pekerjaan_id' => 'required|exists:pekerjaan,id',
             'gender'       => 'required|in:male,female',
-            'is_active'    => 'boolean'
+
+            // Validasi Captcha
+            'captcha'      => 'required|captcha'
+        ], [
+
+            'captcha.captcha' => 'Kode keamanan yang Anda masukkan salah.',
         ]);
 
         if ($validator->fails()) {

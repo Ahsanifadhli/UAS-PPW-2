@@ -56,6 +56,26 @@
                     </select>
                 </div>
 
+                {{-- === INPUT CAPTCHA (Task 17) === --}}
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Kode Keamanan</label>
+
+                    <div class="flex items-center gap-3 mb-2">
+                        {{-- Gambar Captcha --}}
+                        <span class="rounded-md overflow-hidden border border-gray-300">
+                            {!! captcha_img('flat') !!}
+                        </span>
+
+
+                        <button type="button" class="text-sm text-blue-600 hover:text-blue-800 underline" onclick="window.location.reload()">
+                            Ganti Gambar
+                        </button>
+                    </div>
+
+                    <input type="text" name="captcha" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Masukkan kode di atas" required>
+                    <p class="mt-1 text-xs text-gray-500">Buktikan bahwa Anda bukan robot.</p>
+                </div>
+
                 <div class="flex justify-end gap-2 mt-6">
                     <button type="reset" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">Reset</button>
                     <button type="submit" class="rounded-md bg-green-600 px-4 py-2 text-sm text-white hover:bg-green-700 cursor-pointer">Simpan</button>
